@@ -1,0 +1,95 @@
+ * { scroll-behavior: smooth; }
+    body { background-color: #0a0e1a; color: #e2e8f0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0e1a; }
+    ::-webkit-scrollbar-thumb { background: #00e5ff; border-radius: 10px; }
+
+    /* Grid bg */
+    .grid-bg {
+      background-image: linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Glow card */
+    .glow-card {
+      border: 1px solid rgba(0,229,255,0.15);
+      background: rgba(26,34,54,0.8);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .glow-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,255,0.05), transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .glow-card:hover { border-color: rgba(0,229,255,0.5); transform: translateY(-4px); box-shadow: 0 0 30px rgba(0,229,255,0.1); }
+    .glow-card:hover::before { opacity: 1; }
+
+    /* Typing animation */
+    .typed-text::after { content: '|'; animation: blink 1s step-end infinite; color: #00e5ff; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* Skill bar */
+    .skill-bar { height: 6px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
+    .skill-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #00e5ff, #7c3aed); transition: width 1.5s ease; width: 0; }
+
+    /* Nav active */
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:#00e5ff; transition:width 0.3s; }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+
+    /* Section reveal */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Particle canvas */
+    #particles { position:fixed; top:0; left:0; pointer-events:none; z-index:0; }
+
+    /* Accent text */
+    .accent { color: #00e5ff; }
+    .accent2 { color: #7c3aed; }
+
+    /* Tag */
+    .tag { background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.25); color: #00e5ff; padding: 2px 10px; border-radius: 999px; font-size: 0.7rem; font-family: 'Space Mono'; }
+
+    /* Timeline */
+    .timeline-line { position:absolute; left:20px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom, #00e5ff, #7c3aed); }
+    .timeline-dot { width:12px; height:12px; border-radius:50%; background:#00e5ff; box-shadow:0 0 10px #00e5ff; flex-shrink:0; }
+
+    /* Neon button */
+    .btn-neon {
+      border: 2px solid #00e5ff; color: #00e5ff; background: transparent;
+      transition: all 0.3s; font-family: 'Space Mono'; letter-spacing: 1px;
+    }
+    .btn-neon:hover { background: #00e5ff; color: #0a0e1a; box-shadow: 0 0 20px #00e5ff; }
+
+    .btn-solid {
+      background: linear-gradient(135deg, #00e5ff, #7c3aed); color: #0a0e1a;
+      border: none; font-family: 'Space Mono'; letter-spacing: 1px; font-weight: 700;
+      transition: all 0.3s;
+    }
+    .btn-solid:hover { box-shadow: 0 0 25px rgba(0,229,255,0.5); transform: translateY(-2px); }
+
+    /* Mobile menu */
+    #mobile-menu { transition: all 0.3s ease; }
+
+    /* Project image placeholder */
+    .project-img { height:180px; background: linear-gradient(135deg, #111827, #1a2236); display:flex; align-items:center; justify-content:center; font-size:3rem; }
+
+    /* Contact input */
+    .contact-input {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: #e2e8f0; border-radius: 8px; padding: 12px 16px; width: 100%;
+      transition: border-color 0.3s; outline: none; font-family: 'Inter';
+    }
+    .contact-input:focus { border-color: #00e5ff; box-shadow: 0 0 0 3px rgba(0,229,255,0.1); }
+
+    /* Glowing border animation on hero */
+    @keyframes borderGlow { 0%,100%{box-shadow:0 0 20px rgba(0,229,255,0.3)} 50%{box-shadow:0 0 40px rgba(124,58,237,0.4)} }
+    .avatar-ring { animation: borderGlow 3s ease-in-out infinite; }

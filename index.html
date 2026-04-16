@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mojahidul Islam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            bg: '#0a0e1a',
+            surface: '#111827',
+            card: '#1a2236',
+            accent: '#00e5ff',
+            accent2: '#7c3aed',
+            neon: '#39ff14',
+            muted: '#64748b',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s ease-in-out infinite',
+            'slide-up': 'slideUp 0.7s ease forwards',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+            'type': 'typing 3s steps(30) infinite alternate',
+          },
+          keyframes: {
+            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' }},
+            slideUp: { from: { opacity: 0, transform: 'translateY(40px)' }, to: { opacity: 1, transform: 'translateY(0)' }},
+            glow: { from: { textShadow: '0 0 10px #00e5ff, 0 0 20px #00e5ff' }, to: { textShadow: '0 0 20px #00e5ff, 0 0 40px #7c3aed' }},
+          }
+        }
+      }
+    }
+  </script>
+<link rel="stylesheet" href="styles/styles.css">
+  
+</head>
+
+<body class="relative">
+<canvas id="particles"></canvas>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300" style="background:rgba(10,14,26,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,229,255,0.08)">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#home" class="font-mono text-accent text-xl font-bold tracking-wider">&lt;Mojahidul /&gt;</a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex items-center gap-8 text-sm font-body font-medium text-slate-300">
+      <li><a href="#home" class="nav-link active hover:text-accent transition-colors">Home</a></li>
+      <li><a href="#about" class="nav-link hover:text-accent transition-colors">About</a></li>
+      <li><a href="#education" class="nav-link hover:text-accent transition-colors">Education</a></li>
+      <li><a href="#skills" class="nav-link hover:text-accent transition-colors">Skills</a></li>
+      <li><a href="#projects" class="nav-link hover:text-accent transition-colors">Projects</a></li>
+      <li><a href="#contact" class="nav-link hover:text-accent transition-colors">Contact</a></li>
+    </ul>
+
+    <a href="resume.pdf" download class="hidden md:block btn-neon text-xs px-5 py-2 rounded-full cursor-pointer">
+      <i class="fas fa-download mr-2"></i>Resume
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden text-accent text-xl">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden flex-col gap-4 px-6 py-5 text-slate-300 text-sm border-t border-white/5">
+    <a href="#home" class="hover:text-accent" onclick="closeMobileMenu()">Home</a>
+    <a href="#about" class="hover:text-accent" onclick="closeMobileMenu()">About</a>
+    <a href="#education" class="hover:text-accent" onclick="closeMobileMenu()">Education</a>
+    <a href="#skills" class="hover:text-accent" onclick="closeMobileMenu()">Skills</a>
+    <a href="#projects" class="hover:text-accent" onclick="closeMobileMenu()">Projects</a>
+    <a href="#contact" class="hover:text-accent" onclick="closeMobileMenu()">Contact</a>
+    <a href="#" class="btn-neon text-xs px-4 py-2 rounded-full w-fit"><i class="fas fa-download mr-2"></i>Resume</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="home" class="relative min-h-screen flex items-center grid-bg pt-16">
+  <div class="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent2/5"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 flex flex-col-reverse md:flex-row items-center gap-12">
+
+    <!-- Text -->
+    <div class="flex-1 text-center md:text-left">
+      <div class="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-1 mb-6">
+        <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
+        <span class="font-mono text-xs text-accent tracking-widest">AVAILABLE FOR INTERNSHIP</span>
+      </div>
+
+      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">
+        Hi, I'm <span class="accent">Mojahidul</span><br/>Islam
+      </h1>
+
+      <div class="font-mono text-lg md:text-xl text-slate-400 mb-6 h-8">
+        <span id="typed" class="typed-text accent"></span>
+      </div>
+
+      <p class="font-body text-slate-400 leading-relaxed max-w-xl mb-8 text-base">
+        A passionate <span class="text-white font-medium">Computer Science student</span> building real-world projects with modern web technologies. I love turning ideas into elegant, functional code.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+        <a href="#projects" class="btn-solid px-7 py-3 rounded-full text-sm cursor-pointer">
+          View Projects <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+        <a href="#contact" class="btn-neon px-7 py-3 rounded-full text-sm cursor-pointer">
+          Hire Me
+        </a>
+      </div>
+
+      <!-- Social links -->
+      <div class="flex gap-5 mt-8 justify-center md:justify-start">
+        <a href="#" class="text-muted hover:text-accent transition-all hover:scale-125 text-xl"><i class="fab fa-github"></i></a>
+        <a href="#" class="text-muted hover:text-accent transition-all hover:scale-125 text-xl"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="text-muted hover:text-accent transition-all hover:scale-125 text-xl"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-muted hover:text-accent transition-all hover:scale-125 text-xl"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <!-- Avatar -->
+    <div class="flex-shrink-0 flex flex-col items-center gap-4">
+      <div class="avatar-ring w-56 h-56 md:w-64 md:h-64 rounded-full p-1 bg-gradient-to-br from-accent via-accent2 to-accent">
+        <div class="w-full h-full rounded-full overflow-hidden bg-card flex items-center justify-center text-8xl">
+          <img src="mojahid.png" alt="">
+        </div>
+      </div>
+      <!-- Stats -->
+      <div class="flex gap-6 mt-2">
+        <div class="text-center">
+          <div class="font-display text-2xl font-bold text-accent" id="proj-count">0</div>
+          <div class="text-xs text-muted font-mono">Projects</div>
+        </div>
+        <div class="w-px bg-white/10"></div>
+        <div class="text-center">
+          <div class="font-display text-2xl font-bold text-accent" id="skill-count">0</div>
+          <div class="text-xs text-muted font-mono">Skills</div>
+        </div>
+        <div class="w-px bg-white/10"></div>
+        <div class="text-center">
+          <div class="font-display text-2xl font-bold text-accent">2+</div>
+          <div class="text-xs text-muted font-mono">Years</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted animate-bounce">
+    <span class="font-mono text-xs tracking-widest">SCROLL</span>
+    <i class="fas fa-chevron-down text-accent"></i>
+  </div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section id="about" class="py-24 relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <p class="font-mono text-accent text-sm tracking-widest mb-2">// 01. ABOUT</p>
+      <h2 class="font-display text-4xl md:text-5xl font-extrabold">Who Am I?</h2>
+    </div>
+
+    <div class="reveal grid md:grid-cols-2 gap-12 items-center">
+      <!-- Bio -->
+      <div>
+        <h3 class="font-display text-2xl font-bold mb-4 text-white">
+          A Student Developer <span class="accent">Building</span> the Future
+        </h3>
+        <p class="font-body text-slate-400 leading-relaxed mb-4">
+          I'm <strong class="text-white">Mojahidul Islam</strong>, a 2rd-year Computer Science & Engineering student at Bangladesh University. I'm deeply passionate about web development, open-source, and solving real problems through code.
+        </p>
+        <p class="font-body text-slate-400 leading-relaxed mb-6">
+          When I'm not studying, I'm building side projects, contributing to open-source, or learning the latest in AI and web tech. I believe every student can build something great.
+        </p>
+
+        <!-- Highlights -->
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="flex items-center gap-3">
+            <span class="text-accent"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="text-slate-300 text-sm">Mohammadpur, Dhaka, Bangladesh</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-accent"><i class="fas fa-graduation-cap"></i></span>
+            <span class="text-slate-300 text-sm">CSE, BU</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-accent"><i class="fas fa-envelope"></i></span>
+            <span class="text-slate-300 text-sm">mojahidulislam33mk@email.com</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-accent"><i class="fas fa-code-branch"></i></span>
+            <span class="text-slate-300 text-sm">Open to Internship</span>
+          </div>
+        </div>
+
+        <a href="resume.pdf" class="btn-neon px-6 py-2 rounded-full text-sm inline-block">
+          <i class="fas fa-file-pdf mr-2"></i>Download CV
+        </a>
+      </div>
+
+      <!-- Cards -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="glow-card rounded-xl p-5 text-center col-span-2">
+          <div class="text-4xl mb-2">🎯</div>
+          <h4 class="font-display font-bold text-white mb-1">Problem Solver</h4>
+          <p class="text-slate-400 text-sm">I love breaking down complex problems into clean, maintainable code.</p>
+        </div>
+        <div class="glow-card rounded-xl p-5 text-center">
+          <div class="text-3xl mb-2">🌐</div>
+          <h4 class="font-display font-bold text-white mb-1">Web Dev</h4>
+          <p class="text-slate-400 text-sm">Full-stack with focus on modern UX.</p>
+        </div>
+        <div class="glow-card rounded-xl p-5 text-center">
+          <div class="text-3xl mb-2">🤖</div>
+          <h4 class="font-display font-bold text-white mb-1">AI Curious</h4>
+          <p class="text-slate-400 text-sm">Exploring ML and AI integrations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EDUCATION ==================== -->
+<section id="education" class="py-24 relative" style="background:rgba(17,24,39,0.5)">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <p class="font-mono text-accent text-sm tracking-widest mb-2">// 02. EDUCATION</p>
+      <h2 class="font-display text-4xl md:text-5xl font-extrabold">Academic Journey</h2>
+    </div>
+
+    <div class="reveal relative pl-10 max-w-3xl mx-auto">
+      <div class="timeline-line"></div>
+
+      <!-- Item 1 -->
+      <div class="mb-10 relative flex gap-6 items-start">
+        <div class="timeline-dot mt-1 absolute -left-5"></div>
+        <div class="glow-card rounded-xl p-6 flex-1 ml-4">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+            <div>
+              <span class="tag mb-2 inline-block">2024 — Present</span>
+              <h3 class="font-display text-xl font-bold text-white">B.Sc. in Computer Science & Engineering</h3>
+              <p class="text-accent font-mono text-sm mt-1">Bangladesh University (BU)</p>
+            </div>
+            <div class="bg-accent/10 text-accent text-xs font-mono px-3 py-1 rounded-full border border-accent/20"></div>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mt-2">Studying core CS topics including algorithms, data structures, operating systems, databases, and web technologies. Active member of the programming club.</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <span class="tag">Algorithms</span><span class="tag">Databases</span><span class="tag">Networking</span><span class="tag">AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="mb-10 relative flex gap-6 items-start">
+        <div class="timeline-dot mt-1 absolute -left-5" style="background:#7c3aed;box-shadow:0 0 10px #7c3aed"></div>
+        <div class="glow-card rounded-xl p-6 flex-1 ml-4">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+            <div>
+              <span class="tag mb-2 inline-block">2022 — 2023</span>
+              <h3 class="font-display text-xl font-bold text-white">Higher Secondary Certificate (HSC)</h3>
+              <p class="text-accent font-mono text-sm mt-1">Mohammadpur Govt collage, Dhaka</p>
+            </div>
+            <div class="bg-accent/10 text-accent text-xs font-mono px-3 py-1 rounded-full border border-accent/20"></div>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mt-2">Science group with focus on Mathematics and Physics. Achieved perfect GPA and ranked in top 5% statewide.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="relative flex gap-6 items-start">
+        <div class="timeline-dot mt-1 absolute -left-5" style="background:#39ff14;box-shadow:0 0 10px #39ff14"></div>
+        <div class="glow-card rounded-xl p-6 flex-1 ml-4">
+          <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+            <div>
+              <span class="tag mb-2 inline-block">2019 — 2021</span>
+              <h3 class="font-display text-xl font-bold text-white">Secondary School Certificate (SSC)</h3>
+              <p class="text-accent font-mono text-sm mt-1">Moinda School & College, Dhaka</p>
+            </div>
+            <div class="bg-accent/10 text-accent text-xs font-mono px-3 py-1 rounded-full border border-accent/20"></div>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mt-2">Completed SSC with golden A+. Won 1st place in district-level science olympiad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SKILLS ==================== -->
+<section id="skills" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <p class="font-mono text-accent text-sm tracking-widest mb-2">// 03. SKILLS</p>
+      <h2 class="font-display text-4xl md:text-5xl font-extrabold">Tech Stack</h2>
+    </div>
+
+    <div class="reveal grid md:grid-cols-2 gap-12">
+      <!-- Left: Bars -->
+      <div>
+        <h3 class="font-display font-bold text-xl mb-6 text-white">Core Skills</h3>
+        <div class="space-y-5" id="skill-bars">
+          <!-- Dynamically generated -->
+        </div>
+      </div>
+
+      <!-- Right: Grid icons -->
+      <div>
+        <h3 class="font-display font-bold text-xl mb-6 text-white">Tools & Technologies</h3>
+        <div class="grid grid-cols-3 sm:grid-cols-4 gap-4" id="skill-icons">
+          <!-- Dynamically generated -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROJECTS ==================== -->
+<section id="projects" class="py-24" style="background:rgba(17,24,39,0.5)">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal text-center mb-10">
+      <p class="font-mono text-accent text-sm tracking-widest mb-2">// 04. PROJECTS</p>
+      <h2 class="font-display text-4xl md:text-5xl font-extrabold">My Work</h2>
+    </div>
+
+    <!-- Filter buttons -->
+    <div class="reveal flex flex-wrap gap-3 justify-center mb-10" id="filter-btns">
+      <button onclick="filterProjects('all')" class="filter-btn active font-mono text-xs px-5 py-2 rounded-full border border-accent/30 text-accent bg-accent/10 hover:bg-accent hover:text-bg transition-all" data-filter="all">All</button>
+      <button onclick="filterProjects('web')" class="filter-btn font-mono text-xs px-5 py-2 rounded-full border border-white/10 text-slate-400 hover:border-accent/30 hover:text-accent transition-all" data-filter="web">Web</button>
+      <button onclick="filterProjects('mobile')" class="filter-btn font-mono text-xs px-5 py-2 rounded-full border border-white/10 text-slate-400 hover:border-accent/30 hover:text-accent transition-all" data-filter="mobile">Mobile</button>
+      <button onclick="filterProjects('ai')" class="filter-btn font-mono text-xs px-5 py-2 rounded-full border border-white/10 text-slate-400 hover:border-accent/30 hover:text-accent transition-all" data-filter="ai">AI/ML</button>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+      <!-- Dynamically generated -->
+    </div>
+
+    <div class="text-center mt-12">
+      <a href="https://github.com" target="_blank" class="btn-neon px-8 py-3 rounded-full text-sm inline-block">
+        <i class="fab fa-github mr-2"></i>See All on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact" class="py-24">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="reveal text-center mb-16">
+      <p class="font-mono text-accent text-sm tracking-widest mb-2">// 05. CONTACT</p>
+      <h2 class="font-display text-4xl md:text-5xl font-extrabold">Let's Connect</h2>
+      <p class="text-slate-400 mt-3 max-w-lg mx-auto">Have a project, collaboration, or just want to chat? I'd love to hear from you!</p>
+    </div>
+
+    <div class="reveal grid md:grid-cols-5 gap-10">
+      <!-- Info -->
+      <div class="md:col-span-2 space-y-5">
+        <div class="glow-card rounded-xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent"><i class="fas fa-envelope"></i></div>
+          <div>
+            <p class="text-xs text-muted font-mono">EMAIL</p>
+            <p class="text-white text-sm">mojahidulislam33mk@email.com</p>
+          </div>
+        </div>
+        <div class="glow-card rounded-xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent"><i class="fas fa-phone"></i></div>
+          <div>
+            <p class="text-xs text-muted font-mono">PHONE</p>
+            <p class="text-white text-sm">01609453439</p>
+          </div>
+        </div>
+        <div class="glow-card rounded-xl p-5 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <p class="text-xs text-muted font-mono">LOCATION</p>
+            <p class="text-white text-sm">Mohammadpur, Dhaka, Bangladesh</p>
+          </div>
+        </div>
+        <!-- Socials -->
+        <div class="flex gap-4 pt-2">
+          <a href="#" class="glow-card w-10 h-10 rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-bg transition-all"><i class="fab fa-github"></i></a>
+          <a href="#" class="glow-card w-10 h-10 rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-bg transition-all"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="glow-card w-10 h-10 rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-bg transition-all"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="md:col-span-3">
+        <div class="glow-card rounded-2xl p-7">
+          <div id="form-success" class="hidden text-center py-8">
+            <div class="text-5xl mb-4">✅</div>
+            <h3 class="font-display text-xl font-bold text-white mb-2">Message Sent!</h3>
+            <p class="text-slate-400">I'll get back to you within 24 hours.</p>
+            <button onclick="resetForm()" class="btn-neon px-6 py-2 rounded-full text-sm mt-4">Send Another</button>
+          </div>
+          <form id="contact-form" class="space-y-4" onsubmit="submitForm(event)">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-mono text-muted mb-1 block">YOUR NAME</label>
+                <input type="text" class="contact-input" placeholder="Mojahidul" required />
+              </div>
+              <div>
+                <label class="text-xs font-mono text-muted mb-1 block">EMAIL</label>
+                <input type="email" class="contact-input" placeholder="mojahidulislam33mk@email.com" required />
+              </div>
+            </div>
+            <div>
+              <label class="text-xs font-mono text-muted mb-1 block">SUBJECT</label>
+              <input type="text" class="contact-input" placeholder="Project Collaboration" required />
+            </div>
+            <div>
+              <label class="text-xs font-mono text-muted mb-1 block">MESSAGE</label>
+              <textarea class="contact-input h-28 resize-none" placeholder="Hi Mojahidul, I'd love to work with you on..."></textarea>
+            </div>
+            <button type="submit" id="submit-btn" class="btn-solid w-full py-3 rounded-xl text-sm cursor-pointer">
+              <span id="btn-text"><i class="fas fa-paper-plane mr-2"></i>Send Message</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-white/5 py-8 text-center">
+  <p class="font-mono text-sm text-muted">
+    Made with <span class="text-red-400">❤️</span> by <span class="accent">Mojahidul Islam</span> &nbsp;·&nbsp; 
+    <span id="year"></span> &nbsp;·&nbsp;
+    
+  </p>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" 
+  class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full btn-neon flex items-center justify-center text-lg opacity-0 pointer-events-none transition-all duration-300">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+  // ---- DATA ----
+const typedStrings = ['Web Developer 💻', 'Problem Solver 🧩', 'Open Source Fan 🚀', 'CS Student 🎓', 'UI/UX Enthusiast 🎨'];
+
+const skillBars = [
+  { name: 'HTML & CSS', pct: 92, color: '#00e5ff' },
+  { name: 'JavaScript', pct: 85, color: '#7c3aed' },
+  { name: 'React.js', pct: 78, color: '#00e5ff' },
+  { name: 'PHP & MySQL', pct: 72, color: '#39ff14' },
+  { name: 'Python', pct: 70, color: '#7c3aed' },
+  { name: 'Git & GitHub', pct: 88, color: '#00e5ff' },
+];
+
+const skillIcons = [
+  { icon: 'fab fa-html5', label: 'HTML5', color: '#e44d26' },
+  { icon: 'fab fa-css3-alt', label: 'CSS3', color: '#2965f1' },
+  { icon: 'fab fa-js', label: 'JavaScript', color: '#f7df1e' },
+  { icon: 'fab fa-react', label: 'React', color: '#61dafb' },
+  { icon: 'fab fa-php', label: 'PHP', color: '#777bb4' },
+  { icon: 'fas fa-database', label: 'MySQL', color: '#00e5ff' },
+  { icon: 'fab fa-python', label: 'Python', color: '#3776ab' },
+  { icon: 'fab fa-git-alt', label: 'Git', color: '#f05032' },
+  { icon: 'fab fa-node-js', label: 'Node.js', color: '#68a063' },
+  { icon: 'fab fa-docker', label: 'Docker', color: '#0db7ed' },
+  { icon: 'fab fa-figma', label: 'Figma', color: '#a259ff' },
+  { icon: 'fab fa-linux', label: 'Linux', color: '#ffd700' },
+];
+
+const projects = [
+  { title: 'E-Commerce Platform', desc: 'A full-stack shopping website with cart, payments, and admin panel built with PHP, MySQL & JavaScript.', tags: ['PHP', 'MySQL', 'JS'], category: 'web', icon: '🛒', color: '#00e5ff', github: '#', demo: '#' },
+  { title: 'AI Chat Assistant', desc: 'A smart chatbot powered by OpenAI API with React front-end and Node.js backend.', tags: ['React', 'Node.js', 'AI'], category: 'ai', icon: '🤖', color: '#7c3aed', github: '#', demo: '#' },
+  { title: 'Student Dashboard', desc: 'A university student portal to track classes, grades, and assignments with real-time updates.', tags: ['React', 'Firebase', 'CSS'], category: 'web', icon: '📊', color: '#39ff14', github: '#', demo: '#' },
+  { title: 'Task Manager App', desc: 'Mobile-first task management app with drag-drop, priorities, and notifications.', tags: ['React Native', 'SQLite'], category: 'mobile', icon: '✅', color: '#00e5ff', github: '#', demo: '#' },
+  { title: 'Weather App', desc: 'Beautiful weather dashboard using OpenWeather API with 7-day forecasts and location detection.', tags: ['JavaScript', 'API', 'CSS'], category: 'web', icon: '🌤️', color: '#fbbf24', github: '#', demo: '#' },
+  { title: 'Image Classifier', desc: 'ML model that classifies images into 10 categories using TensorFlow and Python.', tags: ['Python', 'TensorFlow', 'ML'], category: 'ai', icon: '🧠', color: '#7c3aed', github: '#', demo: '#' },
+];
+
+// ---- INIT ----
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('year').textContent = new Date().getFullYear();
+  initTyped();
+  renderSkillBars();
+  renderSkillIcons();
+  renderProjects('all');
+  initScrollReveal();
+  initParticles();
+  animateCounters();
+});
+
+// ---- TYPED EFFECT ----
+let typedIdx = 0, charIdx = 0, deleting = false;
+function initTyped() {
+  const el = document.getElementById('typed');
+  function type() {
+    const str = typedStrings[typedIdx];
+    if (!deleting) {
+      el.textContent = str.slice(0, ++charIdx);
+      if (charIdx === str.length) { deleting = true; setTimeout(type, 1500); return; }
+    } else {
+      el.textContent = str.slice(0, --charIdx);
+      if (charIdx === 0) { deleting = false; typedIdx = (typedIdx + 1) % typedStrings.length; }
+    }
+    setTimeout(type, deleting ? 60 : 100);
+  }
+  type();
+}
+
+// ---- RENDER SKILLS ----
+function renderSkillBars() {
+  const c = document.getElementById('skill-bars');
+  skillBars.forEach(s => {
+    c.innerHTML += `
+      <div>
+        <div class="flex justify-between mb-1">
+          <span class="font-body text-sm text-slate-300">${s.name}</span>
+          <span class="font-mono text-xs accent">${s.pct}%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill" data-width="${s.pct}" style="background:linear-gradient(90deg,${s.color},#7c3aed)"></div>
+        </div>
+      </div>`;
+  });
+}
+
+function renderSkillIcons() {
+  const c = document.getElementById('skill-icons');
+  skillIcons.forEach(s => {
+    c.innerHTML += `
+      <div class="glow-card rounded-xl p-3 text-center cursor-default">
+        <i class="${s.icon} text-2xl mb-1" style="color:${s.color}"></i>
+        <p class="text-xs text-muted font-mono">${s.label}</p>
+      </div>`;
+  });
+}
+
+// ---- RENDER PROJECTS ----
+function renderProjects(filter) {
+  const grid = document.getElementById('projects-grid');
+  const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+  grid.innerHTML = '';
+  filtered.forEach((p, i) => {
+    grid.innerHTML += `
+      <div class="glow-card rounded-2xl overflow-hidden reveal" style="animation-delay:${i*0.1}s">
+        <div class="project-img" style="background:linear-gradient(135deg,#111827,#1a2236)">
+          <span style="font-size:4rem">${p.icon}</span>
+        </div>
+        <div class="p-5">
+          <h3 class="font-display font-bold text-lg text-white mb-2">${p.title}</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">${p.desc}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+          </div>
+          <div class="flex gap-3">
+            <a href="${p.github}" class="btn-neon text-xs px-4 py-2 rounded-full flex items-center gap-1">
+              <i class="fab fa-github"></i> Code
+            </a>
+            <a href="${p.demo}" class="btn-solid text-xs px-4 py-2 rounded-full flex items-center gap-1">
+              <i class="fas fa-external-link-alt"></i> Live
+            </a>
+          </div>
+        </div>
+      </div>`;
+  });
+  // Trigger reveal on new cards
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (isInViewport(el)) el.classList.add('visible');
+    });
+  }, 50);
+}
+
+// ---- FILTER PROJECTS ----
+function filterProjects(filter) {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active', 'bg-accent/10', 'text-accent', 'border-accent/30');
+    btn.classList.add('text-slate-400', 'border-white/10');
+  });
+  const active = document.querySelector(`[data-filter="${filter}"]`);
+  if (active) {
+    active.classList.add('active', 'bg-accent/10', 'text-accent', 'border-accent/30');
+    active.classList.remove('text-slate-400', 'border-white/10');
+  }
+  renderProjects(filter);
+}
+
+// ---- SCROLL REVEAL ----
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight - 80;
+}
+function initScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate skill bars when visible
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// ---- COUNTERS ----
+function animateCounters() {
+  animCount('proj-count', projects.length, 1500);
+  animCount('skill-count', skillIcons.length, 1500);
+}
+function animCount(id, target, duration) {
+  const el = document.getElementById(id);
+  let start = 0, step = target / (duration / 16);
+  const t = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(t); }
+    else el.textContent = Math.floor(start);
+  }, 16);
+}
+
+// ---- PARTICLES ----
+function initParticles() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = Array.from({ length: 60 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5 + 0.5,
+    vx: (Math.random() - 0.5) * 0.4,
+    vy: (Math.random() - 0.5) * 0.4,
+    alpha: Math.random() * 0.5 + 0.1,
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0,229,255,${p.alpha})`;
+      ctx.fill();
+    });
+    // Draw lines between close particles
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,229,255,${0.05 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
+
+// ---- MOBILE MENU ----
+document.getElementById('menu-btn').addEventListener('click', () => {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('hidden');
+  menu.classList.toggle('flex');
+});
+function closeMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.add('hidden');
+  menu.classList.remove('flex');
+}
+
+// ---- SCROLL TOP ----
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('scroll-top');
+  if (window.scrollY > 400) {
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+  } else {
+    btn.style.opacity = '0';
+    btn.style.pointerEvents = 'none';
+  }
+  // Update nav active link
+  const sections = ['home','about','education','skills','projects','contact'];
+  let current = 'home';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 100) current = id;
+  });
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+
+// ---- CONTACT FORM ----
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('btn-text');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+  setTimeout(() => {
+    document.getElementById('contact-form').classList.add('hidden');
+    document.getElementById('form-success').classList.remove('hidden');
+  }, 1500);
+}
+function resetForm() {
+  document.getElementById('contact-form').reset();
+  document.getElementById('contact-form').classList.remove('hidden');
+  document.getElementById('form-success').classList.add('hidden');
+  document.getElementById('btn-text').innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Send Message';
+}
+</script>
+
+</body>
+</html>
